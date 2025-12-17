@@ -433,6 +433,90 @@ body {
     min-height: 60px;
 }
 
+/* Chimp Test - Grille 4x4 */
+#chimpGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+#chimpGrid div {
+    background: #e9ecef;
+    border-radius: 15px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#chimpGrid div:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+#chimpGrid div.showing {
+    background: #667eea !important;
+    color: white !important;
+}
+
+#chimpGrid div.hidden {
+    background: #764ba2;
+    color: white;
+}
+
+#chimpGrid div.correct {
+    background: #2ecc71 !important;
+    color: white;
+}
+
+/* Visual Memory Test - Grille 3x3 */
+#visualGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+#visualGrid div {
+    width: 120px;
+    height: 120px;
+    background: #e9ecef;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#visualGrid div:hover {
+    transform: translateY(-8px);
+}
+
+#visualGrid div.active {
+    background: #f39c12 !important;
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(243, 156, 18, 0.8);
+}
+
+#visualGrid div.correct {
+    background: #2ecc71 !important;
+}
+
 /* Leaderboard */
 .leaderboard-tabs {
     display: flex;
@@ -577,6 +661,7 @@ body {
 .floating-emojis span:nth-child(6) { top: 80%; left: 70%; animation-delay: 10s; }
 .floating-emojis span:nth-child(7) { top: 40%; left: 30%; animation-delay: 12s; }
 .floating-emojis span:nth-child(8) { top: 60%; left: 5%; animation-delay: 14s; }
+.floating-emojis span:nth-child(9) { top: 35%; left: 65%; animation-delay: 3s; }
 
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(50px); }
@@ -588,7 +673,7 @@ body {
     100% { transform: translateY(-100px) rotate(360deg); }
 }
 
-/* Progress Bar (Number Memory) */
+/* Progress Bar */
 .progress-container {
     margin: 40px auto;
     max-width: 600px;
@@ -633,22 +718,20 @@ body {
     .stats-grid, .tests-grid { grid-template-columns: 1fr; }
     .typing-text { font-size: 1.4em; padding: 20px; }
     .welcome-title { font-size: 2.8em; }
+    #chimpGrid, #visualGrid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    #chimpGrid div, #visualGrid div { height: 80px; font-size: 2em; }
 }
 
-/* === PROTECTION ANTI-COPIE === */
+/* PROTECTION ANTI-COPIE */
 body, .main-content, .test-content, .login-box, .profile-card, .stat-card, .test-card {
-    -webkit-user-select: none;  /* Chrome, Safari, Opera */
-    -moz-user-select: none;     /* Firefox */
-    -ms-user-select: none;      /* Internet Explorer/Edge */
-    user-select: none;          /* Standard */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
-/* Désactive le menu contextuel (clic droit) sur tout le site */
-body {
-    -webkit-touch-callout: none; /* iOS Safari */
-}
+body { -webkit-touch-callout: none; }
 
-/* Empêche la sélection sur les éléments interactifs (pour ne pas gêner les inputs des tests) */
 .number-input, .typing-input, input[type="text"], input[type="email"], input[type="password"] {
-    user-select: text; /* Autorise la saisie dans les champs */
+    user-select: text;
 }
